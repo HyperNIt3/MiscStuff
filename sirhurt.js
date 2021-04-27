@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Sirhurt Hider
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  Tired of seeing Sirhurt threads? Here's your solution
 // @author       HyperNite
 // @match        *://v3rmillion.net/*
@@ -13,8 +13,8 @@
 
 	var elementsArray = document.getElementsByClassName("subject_new");
 	for (var i = 0; i < elementsArray.length; i++) {
-		var content = elementsArray.item(i).textContent;
-		if (content.toLowerCase().includes("sirhurt")) {
+		var content = elementsArray.item(i).textContent.toLowerCase();
+		if (content.includes("sirhurt")) {
 			let toRemove = elementsArray.item(i).parentElement.parentElement.parentElement.parentElement;
 			toRemove.parentNode.removeChild(toRemove);
 		}
@@ -24,9 +24,8 @@
 
 		var elementsArray = document.getElementsByClassName("subject_old");
 		for (var i = 0; i < elementsArray.length; i++) {
-			var content = elementsArray.item(i).textContent;
-			console.log(content.toLowerCase());
-			if (content.toLowerCase().includes("sirhurt")) {
+			var content = elementsArray.item(i).textContent.toLowerCase();
+			if (content.includes("sirhurt")) {
 				let toRemove = elementsArray.item(i).parentElement.parentElement.parentElement.parentElement;
 				toRemove.parentNode.removeChild(toRemove);
 			}
